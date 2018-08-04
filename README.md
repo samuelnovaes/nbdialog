@@ -1,2 +1,83 @@
-# nbdialog
-No blocking dialogs for JavaScript
+# NBDialog
+Non blocking dialogs for JavaScript.
+
+# Usage
+Download `nbdialog.js` and import into your HTML
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>NBDialogs</title>
+</head>
+
+<body>
+	<script src="nbdialog.js"></script>
+	<script>
+		_prompt('Whatis your name?').then(name => {
+			_alert(`Hello ${name}`)
+		})
+	</script>
+</body>
+
+</html>
+```
+
+# Alert Box
+An alert box is often used if you want to make sure information comes through to the user.
+
+When an alert box pops up, the user will have to click "OK" to proceed.
+
+### Example
+```javascript
+_alert("I am an alert box!");
+```
+
+# Confirm Box
+A confirm box is often used if you want the user to verify or accept something.
+
+When a confirm box pops up, the user will have to click either "OK" or "Cancel" to proceed.
+
+If the user clicks "OK", the promise resolves true. If the user clicks "Cancel", the promise resolves false.
+
+## Example
+```javascript
+_confirm("Press a button!").then(ok => {
+	if(ok){
+		txt = "You pressed OK!";
+	}
+	else {
+		txt = "You pressed Cancel!";
+	}
+});
+```
+
+# Prompt Box
+A prompt box is often used if you want the user to input a value before entering a page.
+
+When a prompt box pops up, the user will have to click either "OK" or "Cancel" to proceed after entering an input value.
+
+If the user clicks "OK" the promise resolves the input value. If the user clicks "Cancel" the promise resolves null.
+
+## Example
+```javascript
+_prompt("Please enter your name", "Harry Potter").then(person => {
+	if (person == null || person == "") {
+		txt = "User cancelled the prompt.";
+	} else {
+		txt = "Hello " + person + "! How are you today?";
+	}
+})
+```
+
+# Line Breaks
+To display line breaks inside a popup box, use a back-slash followed by the character n.
+
+## Example
+```javascript
+_alert("Hello\nHow are you?");
+```

@@ -1,0 +1,24 @@
+{
+  "name": "nbdialog",
+  "version": "1.0.0",
+  "description": "No blocking dialogs for JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "babel": "babel nbdialogdev.js --watch --out-file nbdialog.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samuelnovaes/nbdialog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samuelnovaes/nbdialog/issues"
+  },
+  "homepage": "https://github.com/samuelnovaes/nbdialog#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}
