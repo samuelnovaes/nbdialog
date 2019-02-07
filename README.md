@@ -2,8 +2,6 @@
 Non blocking dialogs for JavaScript.
 
 # Usage
-Import nbdialog into your HTML
-
 ```html
 <!DOCTYPE html>
 <html>
@@ -16,6 +14,7 @@ Import nbdialog into your HTML
 </head>
 
 <body>
+	<!-- Import nbdialog library -->
 	<script src="https://samuelnovaes.github.io/nbdialog/nbdialog.js"></script>
 	<script>
 		_prompt('Whatis your name?').then(name => {
