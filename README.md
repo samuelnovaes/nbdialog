@@ -2,7 +2,7 @@
 Non blocking dialogs for JavaScript.
 
 # Usage
-Download `nbdialog.js` and import into your HTML
+Import nbdialog into your HTML
 
 ```html
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ Download `nbdialog.js` and import into your HTML
 </head>
 
 <body>
-	<script src="nbdialog.js"></script>
+	<script src="https://samuelnovaes.github.io/nbdialog/nbdialog.js"></script>
 	<script>
 		_prompt('Whatis your name?').then(name => {
 			_alert(`Hello ${name}`)
