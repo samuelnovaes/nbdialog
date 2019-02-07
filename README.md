@@ -14,7 +14,7 @@ Non blocking dialogs for JavaScript.
 </head>
 
 <body>
-	<!-- Import nbdialog library -->
+	<!-- Import NBDialog library -->
 	<script src="https://samuelnovaes.github.io/nbdialog/nbdialog.js"></script>
 	<script>
 		_prompt('Whatis your name?').then(name => {
