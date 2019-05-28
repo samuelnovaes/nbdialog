@@ -87,8 +87,10 @@
 	};
 
 	var inputComponent = function inputComponent(parent) {
+		var isPassword = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
 		var el = document.createElement('input');
-		el.type = 'text';
+		el.type = isPassword ? 'password' : 'text';
 		Object.assign(el.style, {
 			width: '100%',
 			padding: '5px',
@@ -146,11 +148,12 @@
 	window._prompt = function () {
 		var msg = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 		var defaultText = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+		var isPassword = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
 		var promptBg = bgComponent(document.body);
 		var promptBox = boxComponent(promptBg);
 		var promptMsg = msgComponent(promptBox);
-		var promptInput = inputComponent(promptBox);
+		var promptInput = inputComponent(promptBox, isPassword);
 		var promptOk = okComponent(promptBox);
 		var promptCancel = cancelComponent(promptBox);
 

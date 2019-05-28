@@ -84,9 +84,9 @@
 		return el
 	}
 
-	const inputComponent = parent => {
+	const inputComponent = (parent, isPassword = false) => {
 		const el = document.createElement('input')
-		el.type = 'text'
+		el.type = isPassword ? 'password' : 'text'
 		Object.assign(el.style, {
 			width: '100%',
 			padding: '5px',
@@ -137,11 +137,11 @@
 		})
 	}
 
-	window._prompt = (msg = '', defaultText = '') => {
+	window._prompt = (msg = '', defaultText = '', isPassword = false) => {
 		const promptBg = bgComponent(document.body)
 		const promptBox = boxComponent(promptBg)
 		const promptMsg = msgComponent(promptBox)
-		const promptInput = inputComponent(promptBox)
+		const promptInput = inputComponent(promptBox, isPassword)
 		const promptOk = okComponent(promptBox)
 		const promptCancel = cancelComponent(promptBox)
 
