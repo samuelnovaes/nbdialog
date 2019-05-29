@@ -57,7 +57,7 @@ _confirm(message)
 
 ## Example
 ```javascript
-_confirm("Press a button!", "", "text").then(ok => {
+_confirm("Press a button!").then(ok => {
 	if(ok){
 		txt = "You pressed OK!";
 	}
