@@ -87,10 +87,10 @@
 	};
 
 	var inputComponent = function inputComponent(parent) {
-		var isPassword = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+		var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'text';
 
 		var el = document.createElement('input');
-		el.type = isPassword ? 'password' : 'text';
+		el.type = type;
 		Object.assign(el.style, {
 			width: '100%',
 			padding: '5px',
@@ -102,15 +102,19 @@
 		return el;
 	};
 
+	/**
+  * @param {string} message Display message
+  * @returns {Promise} Promise object
+  */
 	window._alert = function () {
-		var msg = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+		var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
 		var alertBg = bgComponent(document.body);
 		var alertBox = boxComponent(alertBg);
 		var alertMsg = msgComponent(alertBox);
 		var alertOk = okComponent(alertBox);
 
-		alertMsg.innerText = msg;
+		alertMsg.innerText = message;
 		alertOk.focus();
 
 		return new Promise(function (resolve) {
@@ -121,8 +125,12 @@
 		});
 	};
 
+	/**
+  * @param {string} message Display message
+  * @returns {Promise} Promise object represents true if user clicks OK and false if user clicks CANCEL
+  */
 	window._confirm = function () {
-		var msg = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+		var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
 		var confirmBg = bgComponent(document.body);
 		var confirmBox = boxComponent(confirmBg);
@@ -130,7 +138,7 @@
 		var confirmOk = okComponent(confirmBox);
 		var confirmCancel = cancelComponent(confirmBox);
 
-		confirmMsg.innerText = msg;
+		confirmMsg.innerText = message;
 		confirmOk.focus();
 
 		return new Promise(function (resolve) {
@@ -145,19 +153,25 @@
 		});
 	};
 
+	/**
+  * @param {string} message Display message
+  * @param {string} defaultText Default value of input
+  * @param {string} type Type of input
+  * @returns {Promise} Promise object represents input value
+  */
 	window._prompt = function () {
-		var msg = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+		var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 		var defaultText = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-		var isPassword = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+		var type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'text';
 
 		var promptBg = bgComponent(document.body);
 		var promptBox = boxComponent(promptBg);
 		var promptMsg = msgComponent(promptBox);
-		var promptInput = inputComponent(promptBox, isPassword);
+		var promptInput = inputComponent(promptBox, type);
 		var promptOk = okComponent(promptBox);
 		var promptCancel = cancelComponent(promptBox);
 
-		promptMsg.innerText = msg;
+		promptMsg.innerText = message;
 		promptInput.value = defaultText;
 		promptInput.focus();
 

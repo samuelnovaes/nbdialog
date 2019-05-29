@@ -84,9 +84,9 @@
 		return el
 	}
 
-	const inputComponent = (parent, isPassword = false) => {
+	const inputComponent = (parent, type = 'text') => {
 		const el = document.createElement('input')
-		el.type = isPassword ? 'password' : 'text'
+		el.type = type
 		Object.assign(el.style, {
 			width: '100%',
 			padding: '5px',
@@ -98,13 +98,17 @@
 		return el
 	}
 
-	window._alert = (msg = '') => {
+	/**
+	 * @param {string} message Display message
+	 * @returns {Promise} Promise object
+	 */
+	window._alert = (message = '') => {
 		const alertBg = bgComponent(document.body)
 		const alertBox = boxComponent(alertBg)
 		const alertMsg = msgComponent(alertBox)
 		const alertOk = okComponent(alertBox)
 
-		alertMsg.innerText = msg
+		alertMsg.innerText = message
 		alertOk.focus()
 
 		return new Promise(resolve => {
@@ -115,14 +119,18 @@
 		})
 	}
 
-	window._confirm = (msg = '') => {
+	/**
+	 * @param {string} message Display message
+	 * @returns {Promise} Promise object represents true if user clicks OK and false if user clicks CANCEL
+	 */
+	window._confirm = (message = '') => {
 		const confirmBg = bgComponent(document.body)
 		const confirmBox = boxComponent(confirmBg)
 		const confirmMsg = msgComponent(confirmBox)
 		const confirmOk = okComponent(confirmBox)
 		const confirmCancel = cancelComponent(confirmBox)
 
-		confirmMsg.innerText = msg
+		confirmMsg.innerText = message
 		confirmOk.focus()
 
 		return new Promise(resolve => {
@@ -137,15 +145,21 @@
 		})
 	}
 
-	window._prompt = (msg = '', defaultText = '', isPassword = false) => {
+	/**
+	 * @param {string} message Display message
+	 * @param {string} defaultText Default value of input
+	 * @param {string} type Type of input
+	 * @returns {Promise} Promise object represents input value
+	 */
+	window._prompt = (message = '', defaultText = '', type = 'text') => {
 		const promptBg = bgComponent(document.body)
 		const promptBox = boxComponent(promptBg)
 		const promptMsg = msgComponent(promptBox)
-		const promptInput = inputComponent(promptBox, isPassword)
+		const promptInput = inputComponent(promptBox, type)
 		const promptOk = okComponent(promptBox)
 		const promptCancel = cancelComponent(promptBox)
 
-		promptMsg.innerText = msg
+		promptMsg.innerText = message
 		promptInput.value = defaultText
 		promptInput.focus()
 

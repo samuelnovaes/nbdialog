@@ -31,6 +31,12 @@ An alert box is often used if you want to make sure information comes through to
 
 When an alert box pops up, the user will have to click "OK" to proceed.
 
+## Syntax
+```javascript
+_alert(message)
+```
+- **message: string** - Display message (Default to "")
+
 ### Example
 ```javascript
 _alert("I am an alert box!");
@@ -43,9 +49,15 @@ When a confirm box pops up, the user will have to click either "OK" or "Cancel" 
 
 If the user clicks "OK", the promise resolves true. If the user clicks "Cancel", the promise resolves false.
 
+## Syntax
+```javascript
+_confirm(message)
+```
+- **message: string** - Display message (Default to "")
+
 ## Example
 ```javascript
-_confirm("Press a button!").then(ok => {
+_confirm("Press a button!", "", "text").then(ok => {
 	if(ok){
 		txt = "You pressed OK!";
 	}
@@ -62,12 +74,21 @@ When a prompt box pops up, the user will have to click either "OK" or "Cancel" t
 
 If the user clicks "OK" the promise resolves the input value. If the user clicks "Cancel" the promise resolves null.
 
+## Syntax
+```javascript
+_confirm(message, defaultText, type)
+```
+- **message: string** - Display message (Default to "")
+- **defaultText: string** - Default value of input (Default to "")
+- **type: string** - Type of input (Default to "text")
+
 ## Example
 ```javascript
 _prompt("Please enter your name", "Harry Potter").then(person => {
 	if (person == null || person == "") {
 		txt = "User cancelled the prompt.";
-	} else {
+	}
+	else {
 		txt = "Hello " + person + "! How are you today?";
 	}
 })
